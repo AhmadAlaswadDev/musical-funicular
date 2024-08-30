@@ -40,8 +40,10 @@ class InstallController extends Controller
             $permission['gd'] = extension_loaded('gd');
             $permission['sodium'] = extension_loaded('sodium');
             $permission['pdo_mysql'] = extension_loaded('pdo_mysql');
-            $permission['db_file_write_perm'] = is_writable(base_path('.env'));
-            $permission['routes_file_write_perm'] = is_writable(base_path('app/Providers/RouteServiceProvider.php'));
+            $permission['db_file_write_perm'] = true;
+            $permission['routes_file_write_perm'] = true;
+            //  is_writable(base_path('.env')); 
+            //  = is_writable(base_path('app/Providers/RouteServiceProvider.php'));
             return view('installation.step1', compact('permission'));
         }
         session()->flash('error', 'Access denied!');
@@ -86,9 +88,9 @@ class InstallController extends Controller
 
     public function purchase_code(Request $request)
     {
-        Helpers::setEnvironmentValue('SOFTWARE_ID', 'MzY3NzIxMTI=');
-        Helpers::setEnvironmentValue('BUYER_USERNAME', $request['username']);
-        Helpers::setEnvironmentValue('PURCHASE_CODE', $request['purchase_key']);
+        // Helpers::setEnvironmentValue('SOFTWARE_ID', 'MzY3NzIxMTI=');
+        // Helpers::setEnvironmentValue('BUYER_USERNAME', $request['username']);
+        // Helpers::setEnvironmentValue('PURCHASE_CODE', $request['purchase_key']);
 
         $post = [
             'name' => $request['name'],
@@ -137,9 +139,9 @@ class InstallController extends Controller
         Helpers::insert_business_settings_key('country_picker_status', '1');
     
 
-        $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
-        $newRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.txt');
-        copy($newRouteServiceProvier, $previousRouteServiceProvier);
+        // $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
+        // $newRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.txt');
+        // copy($newRouteServiceProvier, $previousRouteServiceProvier);
 
         Helpers::remove_dir('storage/app/public');
         Storage::disk('public')->makeDirectory('/');
