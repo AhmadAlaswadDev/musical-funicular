@@ -49,6 +49,7 @@ trait AddonHelper
             }
         }
 
+        return [];
         return $full_data;
     }
 
