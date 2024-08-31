@@ -32,11 +32,12 @@ class AppServiceProvider extends ServiceProvider
 
         try
         {
-            if(env('APP_ENV') !== 'production')
+            if(env('APP_ENV') !== 'local')
             {
                 $url->forceSchema('https');
             }
-            Config::set('addon_admin_routes',$this->get_addon_admin_routes());
+            // Config::set('addon_admin_routes',$this->get_addon_admin_routes());
+            Config::set('addon_admin_routes',[]);
             Config::set('get_payment_publish_status',$this->get_payment_publish_status());
             Paginator::useBootstrap();
             foreach(Helpers::get_view_keys() as $key=>$value)
