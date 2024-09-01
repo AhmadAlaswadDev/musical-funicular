@@ -8,7 +8,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
 use App\CentralLogics\Helpers;
 use Illuminate\Routing\UrlGenerator;
-
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     use AddonHelper;
@@ -27,15 +27,14 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
 
         try
         {
-            if(env('APP_ENV') !== 'local')
-            {
-                $url->forceSchema('https');
-            }
+            if (mb_strpos(env('APP_URL'), 'https') === 0) {
+                URL::forceScheme('https');
+            } 
             // Config::set('addon_admin_routes',$this->get_addon_admin_routes());
             Config::set('addon_admin_routes',[]);
             Config::set('get_payment_publish_status',$this->get_payment_publish_status());
