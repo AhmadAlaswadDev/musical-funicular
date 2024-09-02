@@ -474,6 +474,7 @@ $countryCode= strtolower($country?$country->value:'auto');
         appId: "{{isset($fcm_credentials['appId']) ? $fcm_credentials['appId'] : ''}}",
         measurementId: "{{isset($fcm_credentials['measurementId']) ? $fcm_credentials['measurementId'] : ''}}"
     };
+    console.log(firebaseConfig)
     firebase.initializeApp(firebaseConfig);
     const messaging = firebase.messaging();
 
