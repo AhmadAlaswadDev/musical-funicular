@@ -58,7 +58,7 @@
                     </div>
 
 
-                    @if (($store_data->module->module_type == 'food') && $toggle_veg_non_veg)
+                    @if (($store_data->module->module_type == 'food') && config('toggle_veg_non_veg'))
                     <!-- Veg/NonVeg filter -->
 
                 <div class="col-sm-6 col-md-4">

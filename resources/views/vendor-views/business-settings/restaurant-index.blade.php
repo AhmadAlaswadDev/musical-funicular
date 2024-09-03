@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     @endif
-                    @if ($toggle_veg_non_veg && config('module.'.$store->module->module_type)['veg_non_veg'])
+                    @if (config('toggle_veg_non_veg') && config('module.'.$store->module->module_type)['veg_non_veg'])
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div class="form-group mb-0">
                             <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="veg">

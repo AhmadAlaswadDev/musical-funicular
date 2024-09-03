@@ -15,7 +15,7 @@
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i class="tio-filter-list"></i> {{translate('messages.stock_limit_list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$items->total()}}</span></h1>
                 </div>
-                @if ($toggle_veg_non_veg)
+                @if (config('toggle_veg_non_veg'))
                 <!-- Veg/NonVeg filter -->
                 <div class="col-sm-auto mb-1 mb-sm-0">
                     <select name="type" data-url="{{url()->full()}}" data-filter="type" data-placeholder="{{translate('messages.all')}}" class="form-control h--37px set-filter">
