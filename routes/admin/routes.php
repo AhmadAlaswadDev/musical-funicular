@@ -39,6 +39,11 @@ use App\Http\Controllers\Admin\Promotion\AdvertisementController;
 use App\Http\Controllers\Admin\Notification\NotificationController;
 use App\Http\Controllers\Admin\Subscription\SubscriptionController;
 
+Route::get('/cache-clear',function(){
+    Illuminate\Support\Facades\Artisan::call('opimize:clear');
+    return redirect('/');
+});
+
 Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
     Route::get(Zone::GET_COORDINATES[URI].'/{id}', [ZoneController::class, 'getCoordinates'])->name('zone.get-coordinates');
